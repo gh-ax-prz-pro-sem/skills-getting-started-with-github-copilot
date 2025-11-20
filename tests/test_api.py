@@ -71,6 +71,19 @@ class TestGetActivities:
         assert "michael@mergington.edu" in chess_club["participants"]
         assert chess_club["max_participants"] == 12
 
+    def test_get_activities_includes_all_required_fields(self, client):
+        """Test that each activity contains all required fields"""
+        response = client.get("/activities")
+        data = response.json()
+        
+        for activity_name, activity_details in data.items():
+            assert "description" in activity_details
+            assert "schedule" in activity_details
+            assert "max_participants" in activity_details
+            assert "participants" in activity_details
+            assert isinstance(activity_details["participants"], list)
+            assert isinstance(activity_details["max_participants"], int)
+
 
 class TestSignupForActivity:
     """Tests for POST /activities/{activity_name}/signup endpoint"""
