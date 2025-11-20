@@ -1,0 +1,7 @@
+{
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use conventional commit message format with type (feat, fix, docs, style, refactor, test, chore), optional scope, and description. Example: 'feat(api): add participant deletion endpoint'"
+    }
+  ]
+}
